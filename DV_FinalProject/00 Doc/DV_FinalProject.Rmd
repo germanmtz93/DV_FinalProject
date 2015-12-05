@@ -1,0 +1,50 @@
+----
+Title: “DV_SProject”
+Authors; Chris Pena, German Martinez, Brian Bargas
+----
+
+####Data Preview:
+
+
+####Explanation of Data:
+'''The data is a index of all the major shootings in the United states since 1982 to present.  So of the data includes the location, and type of shooting, victim and casualties’ details, and shooter’s info. '''
+
+####Shiny App:  Our Shiny App can be found here : https://bswass.shinyapps.io/ShinyProject
+
+###Scatter Plot
+
+'''This plot shows the number of injured victims and fatalities given set venue along with the label of total number of victims on that instance written in the text. We can observe that for almost every venue the number of fatalities outnumbers the number of injuries with the exception of the military venue type. 
+
+We found really interesting that our data supports that one of the place that had the most gun presence is portrayed as one of the safest places during a mass shooting.
+
+'''
+
+![](./ScatterPlot.png)
+
+
+###Crosstab
+
+'''
+This crosstab demonstrates the distribution of total victims based of the perpetrators’ races through the years from 1982 to 2015. The color indicates the percentage of victims that became fatalities. An observation that can be made is the slow increase in other races presence in these visualizations in contrast to the predominant white perpetrators.
+
+We found interesting that how this correlates with the decrease in prejudice in minorities groups, and the increase diversity of the perpetrators shootings.
+'''
+
+![](./Crosstab.png)
+
+
+###Bar Chart
+'''
+This barchart displays each incident per year since 1982. Each bar is labeled with the fatality rate for the specific incident and is colored based on the Fatality KPI which relates each incident to a Low Fatality rate, a Medium Fatality rate, or a High Fatality rate.The barchart also displays a reference line that is placed at the average fatality rate for all incidents. This barchart is interesting because it depicts and compares the severity of each incident. This barchart tells us that in the most recent years (since 2009),the amount of incidents with an above average fatality rate has been greater than the incidents from 1982-2009.
+'''
+
+![](./BarChart.png)
+
+
+##Data Blending
+'''
+These two line plots display the number of homicides in the US and the number of fatalities in mass shootings, respectively, per year from 1992 - 2011. Each plot is labeled by year and either homicides or fatalities. These plots are interesting because they depict how for every local minumum and maxium in the homicides line plot, there is a considerable increase in fatalities of mass shootings. As the number of fatalities in US mass shootings has fluctuated over the time period, the number of homicides in the US has slowly declined. 
+'''
+
+![](./Blending1.png)
+![](./Blending2.png)   
