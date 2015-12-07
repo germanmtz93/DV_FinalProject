@@ -1,0 +1,18 @@
+{
+    "contents" : "#ui.R\n\nrequire(shiny)\nrequire(shinydashboard)\nrequire(leaflet)\n\ndashboardPage(\n  dashboardHeader(\n  ),\n  dashboardSidebar(\n    sidebarMenu(\n      menuItem(\"Crosstab\", tabName = \"crosstab\", icon = icon(\"dashboard\"))\n    )\n  ),\n  dashboardBody(\n    tabItems(\n      # First tab content\n      tabItem(tabName = \"crosstab\",\n              actionButton(inputId = \"light\", label = \"Light\"),\n              actionButton(inputId = \"dark\", label = \"Dark\"),\n              sliderInput(\"KPI1\", \"KPI_High_Max_value:\", \n                          min = 0.6, max = 1,  value = 1),\n              sliderInput(\"KPI2\", \"KPI_Medium_Max_value:\", \n                          min = 0.4, max = 0.6,  value = 0.6),\n              textInput(inputId = \"title\", \n                        label = \"Crosstab Title\",\n                        value = \"Team Record Crosstab\\nWins / Games\"),\n              actionButton(inputId = \"clicks1\",  label = \"Click me\"),\n              plotOutput(\"distPlot1\")\n      )\n    )\n  )\n)\n",
+    "created" : 1449468959609.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "187838052",
+    "id" : "FDDC2B3D",
+    "lastKnownWriteTime" : 1449469166,
+    "path" : "C:/DataViz/6. Final Project/DV_FinalProject/04Shiny/ui.R",
+    "project_path" : "04Shiny/ui.R",
+    "properties" : {
+        "tempName" : "Untitled3"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

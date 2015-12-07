@@ -1,0 +1,8 @@
+name: 04Shiny
+account: bswass
+server: shinyapps.io
+bundleId: 325876
+url: https://bswass.shinyapps.io/04Shiny
+when: 1449470313.57652
+asMultiple: FALSE
+asStatic: FALSE

@@ -1,0 +1,18 @@
+{
+    "contents" : "require(\"jsonlite\")\nrequire(\"RCurl\")\nrequire(ggplot2)\nrequire(dplyr)\nrequire(tidyr)\n\n# These will be made to more resemble Tableau Parameters when we study Shiny.\nKPI_High_Max_value = .6   \nKPI_Medium_Max_value = .4\n\ndf1 <-\n  data.frame(fromJSON(getURL(\n    URLencode(\n      gsub(\n        \"\\n\", \" \", 'skipper.cs.utexas.edu:5001/rest/native/?query=\n        \"select FRANCHID, YEARID, W, G, kpi as ratio,\n         case\n         when kpi > \"p1\" then \\\\\\'Winning Record\\\\\\'\n         when kpi > \"p2\" then \\\\\\'Average Record\\\\\\'\n         else \\\\\\'Losing Record\\\\\\'\n         end kpi from\n         (select FRANCHID, YEARID, w, G, w / G as kpi\n         from teams)\"\n        '\n      )\n      ), httpheader = c(\n        DB = 'jdbc:oracle:thin:@sayonara.microlab.cs.utexas.edu:1521:orcl',\n        USER =\n          'C##cs329e_btb687', PASS = 'orcl_btb687', MODE = 'native_mode',\n        MODEL =\n          'model', returnDimensions = 'False', returnFor = 'JSON',\n        p1 = KPI_High_Max_value, p2 =\n          KPI_Medium_Max_value\n    ), verbose = TRUE\n  ))); View(df1)\n\ndf2 <-\n  data.frame(fromJSON(getURL(\n    URLencode(\n      gsub(\n        \"\\n\", \" \", 'skipper.cs.utexas.edu:5001/rest/native/?query=\n        \"select * from teamsfranchises\"\n        '\n      )\n      ), httpheader = c(\n        DB = 'jdbc:oracle:thin:@sayonara.microlab.cs.utexas.edu:1521:orcl',\n        USER =\n          'C##cs329e_btb687', PASS = 'orcl_btb687', MODE = 'native_mode',\n        MODEL =\n          'model', returnDimensions = 'False', returnFor = 'JSON',\n        p1 = KPI_High_Max_value, p2 =\n          KPI_Medium_Max_value\n    ), verbose = TRUE\n    ))); View(df2)\n\ndf3 <- inner_join(df1, df2, by = \"FRANCHID\")\ndf4 <- filter (df3, ACTIVE == \"Y\") %>% filter (YEARID >= \"2000\") \ndf4[4] <- round(df[4], 2)\nView(df4)\n\nggplot() + \n  coord_cartesian()  +\n  scale_x_discrete() +\n  labs(title='Team Record\\nTotal Wins\\nKPI = Wins/Games') +\n  labs(x=paste(\"Franchise ID\"), y=paste(\"Year\")) +\n  layer(data=df4, \n        mapping=aes(x=FRANCHID, y=YEARID, label=W), \n        stat=\"identity\", \n        stat_params=list(), \n        geom=\"text\",\n        geom_params=list(colour=\"black\"), \n        position=position_identity()\n  ) +\n  layer(data=df4, \n        mapping=aes(x=FRANCHID, y=YEARID, fill=KPI), \n        stat=\"identity\", \n        stat_params=list(), \n        geom=\"tile\",\n        geom_params=list(alpha=0.50), \n        position=position_identity()\n  )\n",
+    "created" : 1449464338651.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4286299989",
+    "id" : "29AAD870",
+    "lastKnownWriteTime" : 1449468749,
+    "path" : "C:/DataViz/6. Final Project/DV_FinalProject/01 Data/RecordCrosstab.R",
+    "project_path" : "01 Data/RecordCrosstab.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
